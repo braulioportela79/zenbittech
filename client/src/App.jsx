@@ -26,17 +26,17 @@ export const App = () => {
       </S.Main>
       <S.Footer>
         <S.SocialMedia>
-          <a href='/'>
-            <img src='../assets/linkedin_icon.png' alt='' />
+          <a href='/' target='_blank'>
+            <img src='../assets/linkedin_icon.png' alt='LinkedIn' />
           </a>
-          <a href='/'>
-            <img src='../assets/twitter_icon.png' alt='' />
+          <a href='/' target='_blank'>
+            <img src='../assets/twitter_icon.png' alt='Twitter' />
           </a>
-          <a href='/'>
-            <img src='../assets/facebook_icon.png' alt='' />
+          <a href='/' target='_blank'>
+            <img src='../assets/facebook_icon.png' alt='Facebook' />
           </a>
-          <a href='/'>
-            <img src='../assets/pinterest_icon.png' alt='' />
+          <a href='/' target='_blank'>
+            <img src='../assets/pinterest_icon.png' alt='Pinterest' />
           </a>
         </S.SocialMedia>
       </S.Footer>
