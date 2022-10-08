@@ -1,0 +1,5 @@
+CREATE TABLE (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    user_name VARCHAR(250) NOT NULL,
+    message TEXT NOT NULL
+);
