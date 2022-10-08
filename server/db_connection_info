@@ -1,0 +1,7 @@
+Host: ec2-18-209-78-11.compute-1.amazonaws.com
+Database: d2mlbmurcpprb
+User: midzjncooerdmz
+Port: 5432
+Password: 256127b3f3c84cdc92aa8c6f0a2b77a205e9c5bcb583312a3b7305fb215e6dd9
+URI: postgres://midzjncooerdmz:256127b3f3c84cdc92aa8c6f0a2b77a205e9c5bcb583312a3b7305fb215e6dd9@ec2-18-209-78-11.compute-1.amazonaws.com:5432/d2mlbmurcpprb
+Heroku CLI: heroku pg:psql postgresql-concave-92640 --app feedback-zenbittech
