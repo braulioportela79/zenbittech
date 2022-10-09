@@ -1,25 +1,49 @@
 import * as S from './style';
+import Feedback from './apis/Feedback';
+import { useState } from 'react';
 
 export const App = () => {
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await Feedback.post('/', {
+      user_name: userName,
+      user_email: userEmail,
+      message,
+    });
+    setUserName('');
+    setUserEmail('');
+    setMessage('');
+  };
+
   return (
     <S.Container>
       <S.Main>
-        <S.Form>
+        <S.Form onSubmit={handleSubmit}>
           <S.FormHeader>Reach out to us!</S.FormHeader>
           <S.TextInput
             placeholder='Your name*'
             type='text'
             required
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
           ></S.TextInput>
           <S.TextInput
             placeholder='Your e-mail*'
             type='email'
             required
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
           ></S.TextInput>
           <S.MsgInput
             placeholder='Your e-mail*'
             type='text'
             required
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           ></S.MsgInput>
           <S.SubmitBtn>Send message</S.SubmitBtn>
         </S.Form>
