@@ -5,8 +5,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FeedbackModule } from './feedback/feedback.module';
 
-
-
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -19,6 +17,10 @@ import { FeedbackModule } from './feedback/feedback.module';
       database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: process.env.DB_SYNCHRONIZE === 'true',
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
     }),
     FeedbackModule,
   ],
