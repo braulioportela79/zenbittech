@@ -10,7 +10,29 @@ import {
 } from './redux/reducers/feedbackReducer';
 
 export const App = () => {
-  const notify = () => toast('Your message was sent succesfully!');
+  const success = () =>
+    toast.success('Your message was sent succesfully!', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+
+  const error = () =>
+    toast.error('Server Error! Please, try again.', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
 
   const dispatch = useDispatch();
   const feedback = useSelector((state) => state.feedback);
@@ -19,25 +41,27 @@ export const App = () => {
   const changeEmail = (newEmail) => dispatch(setEmail(newEmail));
   const changeMessage = (newMessage) => dispatch(setMessage(newMessage));
 
-  const handleNameInput = (e) => changeName(e.target.value);
+  const handleNameInput = (e) =>
+    changeName(e.target.value.replace(/^\s+|\s+$|\s+(?=\s)/g, ' '));
   const handleEmailInput = (e) => changeEmail(e.target.value);
-  const handleMessageInput = (e) => changeMessage(e.target.value);
+  const handleMessageInput = (e) =>
+    changeMessage(e.target.value.replace(/^\s+|\s+$|\s+(?=\s)/g, ' '));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await Feedback.post('/', {
-        user_name: feedback.name,
-        user_email: feedback.email,
-        message: feedback.message,
+      await Feedback.post('/feedback', {
+        user_name: feedback.name.trim(),
+        user_email: feedback.email.trim(),
+        message: feedback.message.trim(),
       });
 
       dispatch(setName(''));
       dispatch(setEmail(''));
       dispatch(setMessage(''));
-      notify();
+      success();
     } catch (err) {
-      console.log(err);
+      error();
     }
   };
 
@@ -53,6 +77,7 @@ export const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme='light'
       />
       <S.Main>
         <S.Form onSubmit={handleSubmit}>
@@ -74,7 +99,7 @@ export const App = () => {
             onChange={handleEmailInput}
           ></S.TextInput>
           <S.MsgInput
-            placeholder='Your e-mail*'
+            placeholder='Your message*'
             type='text'
             maxLength='255'
             required
