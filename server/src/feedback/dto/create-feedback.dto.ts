@@ -4,11 +4,11 @@ export class CreateFeedbackDto {
    
   @IsString()
   @IsNotEmpty()
-  user_name: string;
+  name: string;
 
   @IsString()
   @IsNotEmpty()
-  user_email: string;
+  email: string;
 
   @IsNotEmpty()
   @IsString()

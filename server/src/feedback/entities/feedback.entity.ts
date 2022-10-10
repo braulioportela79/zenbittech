@@ -19,11 +19,11 @@ export class Feedback extends BaseEntity {
   updatedAt: Date;
 
   @Column({ name: 'user_name', type: 'varchar', length: 100 })
-  user_name: string;
+  name: string;
 
   @Column({ name: 'user_email', type: 'varchar', length: 100 })
-  user_email: string;
+  email: string;
 
-  @Column({ name: 'message', type: 'varchar', length: 255 })
+  @Column({ name: 'user_message', type: 'varchar', length: 255 })
   message: string;
 }

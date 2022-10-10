@@ -1,5 +1,5 @@
 export declare class CreateFeedbackDto {
-    user_name: string;
-    user_email: string;
+    name: string;
+    email: string;
     message: string;
 }

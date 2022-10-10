@@ -45,15 +45,15 @@ export const App = () => {
     changeName(e.target.value.replace(/^\s+|\s+$|\s+(?=\s)/g, ' '));
   const handleEmailInput = (e) => changeEmail(e.target.value);
   const handleMessageInput = (e) =>
-    changeMessage(e.target.value.replace(/^\s+|\s+$|\s+(?=\s)/g, ' '));
+    changeMessage(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await Feedback.post('/feedback', {
-        user_name: feedback.name.trim(),
-        user_email: feedback.email.trim(),
-        message: feedback.message.trim(),
+        name: feedback.name.trim(),
+        email: feedback.email.trim(),
+        message: feedback.message.replace(/^\s+|\s+$|\s+(?=\s)/g, ' ').replace(/\n/g, " ").trim(),
       });
 
       dispatch(setName(''));

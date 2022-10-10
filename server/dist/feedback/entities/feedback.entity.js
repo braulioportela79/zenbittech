@@ -28,13 +28,13 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ name: 'user_name', type: 'varchar', length: 100 }),
     __metadata("design:type", String)
-], Feedback.prototype, "user_name", void 0);
+], Feedback.prototype, "name", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'user_email', type: 'varchar', length: 100 }),
     __metadata("design:type", String)
-], Feedback.prototype, "user_email", void 0);
+], Feedback.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'message', type: 'varchar', length: 255 }),
+    (0, typeorm_1.Column)({ name: 'user_message', type: 'varchar', length: 255 }),
     __metadata("design:type", String)
 ], Feedback.prototype, "message", void 0);
 Feedback = __decorate([
